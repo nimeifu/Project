@@ -7,18 +7,25 @@ import java.awt.event.KeyEvent;
 
 public class movement {
     private Image image;
-    private double positionX =50.00;
+    private double positionX ;
     private double positionY;
     private double width;
     private double height;
 
-    public void loadImage()
+
+    public void setImage(Image i)
     {
-        ImageView iv=new ImageView();
-        Image image=new Image("");
-        iv.setImage(image);
+        image=i;
+        width=i.getWidth();
+        height=i.getHeight();
     }
 
+    public void setImage(String file)
+    {
+        Image i=new Image(file);
+        setImage(i);
+
+    }
    public void keyPress(KeyEvent e)
    {
        int key=e.getKeyCode();
@@ -31,5 +38,13 @@ public class movement {
            positionX+=2.00;
        }
    }
+
+   public void setPostion(double x,double y)
+   {
+       positionX=x;
+       positionY=y;
+   }
+
+
 
 }
