@@ -9,10 +9,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyEvent;
 
 import java.awt.*;
 
@@ -36,90 +37,49 @@ public class Main extends Application {
         hero = new ImageView(heroImage);
         Group dungeon = new Group(hero);
 
-        Dimension screenSize=Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-        double width=screenSize.getWidth();
-        double height=screenSize.getHeight();
-        moveHeroTo(300, 200);
-        Scene scene = new Scene(dungeon,width,height,Color.LIGHTBLUE);
+        double width = screenSize.getWidth();
+        double height = screenSize.getHeight();
+        double x=width/2;
+        double y=height/1.5;
+        hero.relocate(x,y);
+        Scene scene = new Scene(dungeon, width, height, Color.LIGHTBLUE);
         stage.setMaximized(true);
 
-
-        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                switch (event.getCode()) {
-                    case UP:    goNorth = true; break;
-                    case DOWN:  goSouth = true; break;
-                    case LEFT:  goWest  = true; break;
-                    case RIGHT: goEast  = true; break;
-                    case SHIFT: running = true; break;
-                }
-            }
-        });
-
-        scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                switch (event.getCode()) {
-                    case UP:    goNorth = false; break;
-                    case DOWN:  goSouth = false; break;
-                    case LEFT:  goWest  = false; break;
-                    case RIGHT: goEast  = false; break;
-                    case SHIFT: running = false; break;
-                }
-            }
-        });
 
         stage.setScene(scene);
         stage.show();
 
-        AnimationTimer timer = new AnimationTimer() {
+        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
-            public void handle(long now) {
-                int dx = 0, dy = 0;
+            public void handle(KeyEvent e) {
+                if (e.getCode() == KeyCode.LEFT) {
+                    hero.relocate(x - 2, y);
+                }
 
-                if (goNorth) dy -= 1;
-                if (goSouth) dy += 1;
-                if (goEast)  dx += 1;
-                if (goWest)  dx -= 1;
-                if (running) { dx *= 3; dy *= 3; }
+                if (e.getCode() == KeyCode.RIGHT) {
+                    hero.relocate(x + 2, y);
+                }
+                if (e.getCode() == KeyCode.LEFT && e.getCode() == KeyCode.SHIFT) {
+                    hero.relocate(x - 4, y);
+                }
+                if (e.getCode() == KeyCode.RIGHT && e.getCode() == KeyCode.SHIFT) {
+                    hero.relocate(x + 4, y);
+                }
 
-                moveHeroBy(dx, dy);
             }
-        };
-        timer.start();
-    }
-
-    private void moveHeroBy(int dx, int dy) {
-        if (dx == 0 && dy == 0) return;
-
-        final double cx = hero.getBoundsInLocal().getWidth()  / 2;
-        final double cy = hero.getBoundsInLocal().getHeight() / 2;
-
-        double x = cx + hero.getLayoutX() + dx;
-        double y = cy + hero.getLayoutY() + dy;
-
-        moveHeroTo(x, y);
-    }
-
-    private void moveHeroTo(double x, double y) {
-        final double cx = hero.getBoundsInLocal().getWidth()  / 2;
-        final double cy = hero.getBoundsInLocal().getHeight() / 2;
-
-        if (x - cx >= 0 &&
-                x + cx <= W &&
-                y - cy >= 0 &&
-                y + cy <= H) {
-            hero.relocate(x - cx, y - cy);
         }
-
-
     }
 
 
 
-    public static void main(String[] args) {
-        launch(args);
+
+
+
+
+        public static void main (String[]args)
+        {
+            launch(args);
+        }
     }
-}
