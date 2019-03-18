@@ -17,9 +17,11 @@ public abstract class SpriteBase
     double dx;
     double dy;
     double endurance;
+    double health;
     double damage;
+    double speed;
 
-    public SpriteBase(Pane layer,Image image,double x,double y,double dx,double dy,double endurance,double damage)
+    public SpriteBase(Pane layer,Image image,double x,double y,double dx,double dy,double endurance,double damage,double speed,double health)
     {
         this.layer=layer;
         this.image=image;
@@ -29,6 +31,8 @@ public abstract class SpriteBase
         this.y=y;
         this.dx=dx;
         this.dy=dy;
+        this.health=health;
+        this.speed=speed;
         this.endurance=endurance;
         this.damage=damage;
     }
@@ -38,6 +42,50 @@ public abstract class SpriteBase
         this.layer.getChildren().add(this.iv);
     }
 
+    public Pane getLayer()
+    {
+        return layer;
+    }
+
+    public double getX()
+    {
+        return x;
+    }
+
+    public double getY()
+    {
+        return y;
+    }
+
+    public double getDx()
+    {
+        return dx;
+    }
+
+    public double getDy()
+    {
+        return dy;
+    }
+
+    public double getEndurance()
+    {
+        return endurance;
+    }
+
+    public double getHealth()
+    {
+        return health;
+    }
+
+    public double getDamage()
+    {
+        return damage;
+    }
+
+    public double getSpeed()
+    {
+        return speed;
+    }
 
 
 }

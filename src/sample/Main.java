@@ -36,29 +36,22 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        Group dungeon = new Group(hero);
+        Group root = new Group();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
-
-        Bounds bs=hero.localToScene(hero.getBoundsInLocal());
-        TranslateTransition hh=new TranslateTransition(Duration.millis(4000.00),hero);
-        Scene scene = new Scene(dungeon, width, height, Color.LIGHTBLUE);
+        Scene scene = new Scene(root, width, height, Color.LIGHTBLUE);
         stage.setMaximized(true);
 
-
-        AnimationTimer gameLoop=new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-
-            }
-        }
-
-
-
-
-
-
     }
+
+
+
+
+
+
+
+
+
+
 
 
 
