@@ -87,5 +87,62 @@ public abstract class SpriteBase
         return speed;
     }
 
+    public void setX(double x)
+    {
+        this.x=x;
+    }
 
+    public void setY(double y)
+    {
+        this.y=y;
+    }
+
+    public void setDx(double dx)
+    {
+        this.dx=dx;
+    }
+
+    public void setDy(double dy)
+    {
+        this.dy=dy;
+    }
+
+    public void setLayer(Pane layer)
+    {
+        this.layer=layer;
+    }
+
+    public void setEndurance(double endurance)
+    {
+        this.endurance=endurance;
+    }
+
+    public void setHealth(double health)
+    {
+        this.health=health;
+    }
+
+    public void setDamage(double damage)
+    {
+        this.damage=damage;
+    }
+
+    public void setSpeed(double speed)
+    {
+        this.speed=speed;
+    }
+
+    public boolean isAlive()
+    {
+        if(health>0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void getDamageFrom()
+    {
+        health-=getDamage();
+    }
 }
