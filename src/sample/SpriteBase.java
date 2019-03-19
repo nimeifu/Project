@@ -1,11 +1,12 @@
 package sample;
 import javafx.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 
 
-import java.awt.*;
+
 
 public abstract class SpriteBase
 {
@@ -21,11 +22,11 @@ public abstract class SpriteBase
     double damage;
     double speed;
 
-    public SpriteBase(Pane layer,Image image,double x,double y,double dx,double dy,double endurance,double damage,double speed,double health)
+    public SpriteBase(Pane layer, Image image, double x, double y, double dx, double dy, double endurance, double damage, double speed, double health)
     {
         this.layer=layer;
         this.image=image;
-        this.iv=new ImageView(String.valueOf(image));
+        this.iv=new ImageView();
 
         this.x=x;
         this.y=y;
@@ -145,4 +146,6 @@ public abstract class SpriteBase
     {
         health-=getDamage();
     }
+
+
 }
