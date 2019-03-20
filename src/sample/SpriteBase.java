@@ -22,7 +22,7 @@ public abstract class SpriteBase
     double damage;
     double speed;
 
-    public SpriteBase(Pane layer, Image image, double x, double y, double dx, double dy, double endurance, double damage, double speed, double health)
+    public SpriteBase(Pane layer, Image image, double x, double y, double dx, double dy, double damage, double speed, double health)
     {
         this.layer=layer;
         this.image=image;
@@ -34,7 +34,6 @@ public abstract class SpriteBase
         this.dy=dy;
         this.health=health;
         this.speed=speed;
-        this.endurance=endurance;
         this.damage=damage;
     }
 
@@ -66,11 +65,6 @@ public abstract class SpriteBase
     public double getDy()
     {
         return dy;
-    }
-
-    public double getEndurance()
-    {
-        return endurance;
     }
 
     public double getHealth()
@@ -113,11 +107,6 @@ public abstract class SpriteBase
         this.layer=layer;
     }
 
-    public void setEndurance(double endurance)
-    {
-        this.endurance=endurance;
-    }
-
     public void setHealth(double health)
     {
         this.health=health;
@@ -133,7 +122,7 @@ public abstract class SpriteBase
         this.speed=speed;
     }
 
-    public boolean isAlive()
+    private boolean isAlive()
     {
         if(health>0)
         {
@@ -142,7 +131,7 @@ public abstract class SpriteBase
         return false;
     }
 
-    public void getDamageFrom()
+    private void getDamageFrom()
     {
         health-=getDamage();
     }

@@ -87,7 +87,7 @@ public class Main extends Application {
         public void createPlayer()
         {
             Image image=playerImage;
-            Player player=new Player(playerfield,,width,height,0,0,100,1,100);
+            Player player=new Player(playerfield,playerImage)
 
         }
 
